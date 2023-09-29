@@ -15,3 +15,43 @@ let initialize: string[] = [];
 //stringArray.push('yunus'); => Uncaught TypeError: Cannot read properties of undefined (reading 'push')
 
 initialize.push('yunus')
+
+
+//UNION TYPES
+
+let mixed: (string | number)[] = []; // If it is array use parenthesis!
+
+mixed.push(10);
+//mixed.push(false) => This will give error because we declared our mixed array string or number
+
+let strOrNumber: string | number;
+
+strOrNumber = 5;
+strOrNumber = 'Yunus';
+
+//OBJECTS
+
+let person1: object;
+
+person1 = { name: 23, age: 'yunus' } // Thi will work beceause we assigned only as a object
+person1 = ['Yunus', ' Emre'] // This will also work because arrays are objects!!!
+
+let person2: {
+    name: string,
+    age: number,
+    isMarried: boolean
+}
+
+person2 = {
+    name: 'Yunus',
+    age: 30,
+    isMarried: true
+}
+// person2 = [] => won't work because we assigned properties
+
+person2 = {
+    name: 'Yunus',
+    age: 30,
+    isMarried: true,
+    // hasCar: true => you can not assign new properties !!!
+}
