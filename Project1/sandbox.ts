@@ -55,3 +55,23 @@ person2 = {
     isMarried: true,
     // hasCar: true => you can not assign new properties !!!
 }
+
+
+// ANY => That means our variable can take all types
+
+let car: any;
+
+car = 25;
+car = 'Skoda';
+
+let mixedArray: any[] = [];
+mixedArray.push(1);
+mixedArray.push('Yunus');
+mixedArray.push(false);
+
+let mixedObj: { name: any, age: any };
+mixedObj = { name: 'yunus', age: 30 };
+mixedObj = { name: 30, age: 'yunus' };
+
+
+

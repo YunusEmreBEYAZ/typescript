@@ -32,3 +32,14 @@ person2 = {
     age: 30,
     isMarried: true
 };
+// ANY => That means our variable can take all types
+var car;
+car = 25;
+car = 'Skoda';
+var mixedArray = [];
+mixedArray.push(1);
+mixedArray.push('Yunus');
+mixedArray.push(false);
+var mixedObj;
+mixedObj = { name: 'yunus', age: 30 };
+mixedObj = { name: 30, age: 'yunus' };
