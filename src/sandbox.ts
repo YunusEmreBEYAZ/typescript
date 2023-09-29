@@ -1,45 +1,30 @@
-let greet: Function;
 
-greet = () => {
-    console.log('Hello World');
+//example1
 
-}
+let greet: (a: string, b: string) => void;
 
-const add = (a: number, b: number, c?: number) => {
-    c ? console.log(a + b + c) : console.log(a + b);
-    ;
-
+greet = (name: string, greeting: string) => {
+    console.log(`${name} says: ${greeting}`);
 
 }
 
-add(2, 3)
 
-const mines = (a: number, b: number, c: number = 1): void => {
-    c ? console.log(a - b - c) : console.log(a - b);
-    ;
+// example 2
 
+let calc: (a: number, b: number, c: string) => number;
 
+calc = (num1: number, num2: number, action: string) => {
+    return action === 'add' ? num1 + num2 : num1 - num2
 }
 
-mines(9, 1, 4)
+// example 3 
+type person = { name: string, age: number };
 
-// DECLARING TYPE!
+//let isLoggedIn: (obj: person) => void;
 
-type StrOrNum = string | number;
-type objWithName = { name: string, uid: StrOrNum };
-
-const logDetails = (uid: string | number, item: string) => {
-    console.log(`${item} has a uid of ${uid}`);
+let isLoggedIn = (someOne: { name: string, age: number }) => {
+    console.log(`${someOne.name} is logged in He/She is ${someOne.age} years old.`);
 
 }
-
-const greet2 = (user: objWithName) => {
-    console.log(`${user.name} says hello ${user.uid} times :)`);
-
-}
-
-const user = {
-    name: 'Yunus',
-    uid: 'five'
-}
-greet2(user)
+const user: person = { name: 'Yunus', age: 30 }
+isLoggedIn(user)
