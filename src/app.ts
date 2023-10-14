@@ -30,20 +30,22 @@
 // greetPerson(user1);
 
 import { isParenthesizedTypeNode } from "../../../../node_modules/typescript/lib/typescript";
-import { Invoice } from "./classes/invoice.js"
+import { Invoice } from "./classes/Invoice.js"
+import { Payment } from "./classes/Payment.js";
+import { HasFormatter } from "./interfaces/HasFormatter";
 
-const invOne = new Invoice('Emre', 'design of website', 180);
-const invTwo = new Invoice('Ali', 'design of websites', 200);
+// const invOne = new Invoice('Emre', 'design of website', 180);
+// const invTwo = new Invoice('Ali', 'design of websites', 200);
 
-let invoices: Invoice[] = [];
-invoices.push(invOne);
-invoices.push(invTwo)
+// let invoices: Invoice[] = [];
+// invoices.push(invOne);
+// invoices.push(invTwo)
 
 
-invoices.forEach(inv => {
-    console.log(inv.client, inv.amount, ":", inv.format());
+// invoices.forEach(inv => {
+//     console.log(inv.client, inv.amount, ":", inv.format());
 
-})
+// })
 
 
 const form = document.querySelector(".new-item-form") as HTMLFormElement;
@@ -58,12 +60,15 @@ const amount = document.querySelector("#amount") as HTMLInputElement;
 form.addEventListener('submit', (e: Event) => {
     e.preventDefault();
 
-    console.log(
-        type.value,
-        tofrom.value,
-        details.value,
-        amount.valueAsNumber
-    );
+    let doc: HasFormatter;
+
+    if (type.value === "invoice") {
+        doc = new Invoice(tofrom.value, details.value, amount.valueAsNumber)
+    } else {
+        doc = new Payment(tofrom.value, details.value, amount.valueAsNumber)
+    }
+
+    console.log(doc);
 
 })
 
