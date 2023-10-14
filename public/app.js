@@ -1,3 +1,10 @@
+// interfaces
+// interface IsPerson {
+//     name: string;
+//     age: number;
+//     speak(a: string): void;
+//     spend(a: number): number;
+// }
 import { Invoice } from "./classes/invoice.js";
 const invOne = new Invoice('Emre', 'design of website', 180);
 const invTwo = new Invoice('Ali', 'design of websites', 200);

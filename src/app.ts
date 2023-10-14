@@ -1,3 +1,35 @@
+// interfaces
+// interface IsPerson {
+//     name: string;
+//     age: number;
+//     speak(a: string): void;
+//     spend(a: number): number;
+// }
+
+// const user1: IsPerson = {
+//     name: "Yunus",
+//     age: 30,
+//     speak(msg: string): void {
+//         console.log(msg);
+
+//     },
+//     spend(cost: number): number {
+//         console.log(`${this.name} spend, ${cost}`);
+
+//         return cost;
+
+//     }
+// }
+
+// console.log(user1.spend);
+
+// const greetPerson = (person: IsPerson) => {
+//     console.log("Hello", person.name, "how was your day?");
+// }
+
+// greetPerson(user1);
+
+import { isParenthesizedTypeNode } from "../../../../node_modules/typescript/lib/typescript";
 import { Invoice } from "./classes/invoice.js"
 
 const invOne = new Invoice('Emre', 'design of website', 180);
