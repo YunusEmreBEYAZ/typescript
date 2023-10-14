@@ -39,7 +39,7 @@ invoices.forEach(inv => {
 
 
 const form = document.querySelector(".new-item-form") as HTMLFormElement;
-// If we don't use "as HTMLFormElement" we ca not choose form properties!!!!
+// If we don't use "as HTMLFormElement" we can not choose form properties!!!!
 //console.log((form.children));
 
 const type = document.querySelector("#type") as HTMLSelectElement;
