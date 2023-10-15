@@ -63,10 +63,13 @@ form.addEventListener('submit', (e: Event) => {
 
     let doc: HasFormatter;
 
+    let values: [string, string, number];
+    values = [tofrom.value, details.value, amount.valueAsNumber];
+
     if (type.value === "invoice") {
-        doc = new Invoice(tofrom.value, details.value, amount.valueAsNumber)
+        doc = new Invoice(...values)
     } else {
-        doc = new Payment(tofrom.value, details.value, amount.valueAsNumber)
+        doc = new Payment(...values)
     }
 
     list.render(doc, type.value, "end")
@@ -112,3 +115,9 @@ const dataTwo: Resource<string[]> = {
 }
 
 console.log(dataOne, dataTwo);
+
+//tuples
+//we can decide the types in which index. With this we can't change the types later. But we can change the content
+let arr: [string, number, boolean] = ["yunus", 30, true];
+
+arr = ["emre", 21, false];
