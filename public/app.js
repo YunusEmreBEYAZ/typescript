@@ -22,6 +22,7 @@ const type = document.querySelector("#type");
 const tofrom = document.querySelector("#tofrom");
 const details = document.querySelector("#details");
 const amount = document.querySelector("#amount");
+const itemList = document.querySelector(".item-list");
 form.addEventListener('submit', (e) => {
     e.preventDefault();
     let doc;
@@ -31,5 +32,7 @@ form.addEventListener('submit', (e) => {
     else {
         doc = new Payment(tofrom.value, details.value, amount.valueAsNumber);
     }
-    console.log(doc);
+    const listItem = document.createElement("li");
+    listItem.textContent = doc.format();
+    itemList.appendChild(listItem);
 });
