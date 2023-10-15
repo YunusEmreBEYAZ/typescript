@@ -52,3 +52,32 @@ form.addEventListener('submit', (e) => {
     }
     list.render(doc, type.value, "end");
 });
+// GENERICS
+//with objects
+const addUID = (obj) => {
+    let uid = Math.floor(Math.random() * 100);
+    return Object.assign(Object.assign({}, obj), { uid });
+};
+let userOne = addUID({ name: "Yunus", age: 30 });
+//let userTwo = addUID({ name: 40, age: 30 })  We can not use number because we declared thar object must a name property with string type!!
+console.log(userOne.name);
+//with interfaces
+// ENUM
+var ResourceType;
+(function (ResourceType) {
+    ResourceType[ResourceType["PERSON"] = 0] = "PERSON";
+    ResourceType[ResourceType["BOOK"] = 1] = "BOOK";
+    ResourceType[ResourceType["SHOPPING"] = 2] = "SHOPPING";
+    ResourceType[ResourceType["FILM"] = 3] = "FILM";
+})(ResourceType || (ResourceType = {}));
+const dataOne = {
+    uid: 1,
+    resourceName: ResourceType.PERSON,
+    data: "Yunus Emre" // we can not use obj like {name:Yunus, age:30}
+};
+const dataTwo = {
+    uid: 2,
+    resourceName: ResourceType.SHOPPING,
+    data: ["egg", "bread", "milk",] // we cant use number in this array because we declared it string!
+};
+console.log(dataOne, dataTwo);

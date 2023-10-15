@@ -73,3 +73,42 @@ form.addEventListener('submit', (e: Event) => {
 
 })
 
+
+// GENERICS
+
+//with objects
+const addUID = <T extends { name: string }>(obj: T) => {
+    let uid = Math.floor(Math.random() * 100);
+    return { ...obj, uid }
+}
+
+let userOne = addUID({ name: "Yunus", age: 30 })
+//let userTwo = addUID({ name: 40, age: 30 })  We can not use number because we declared thar object must a name property with string type!!
+console.log(userOne.name);
+
+
+
+
+//with interfaces
+
+// ENUM
+enum ResourceType { PERSON, BOOK, SHOPPING, FILM }
+interface Resource<T> {
+    uid: number;
+    resourceName: ResourceType; // with this assignment we can choose one of the indexes from enum
+    data: T //with theese structure we can choose different types for data for different interfaces!
+}
+
+const dataOne: Resource<string> = {
+    uid: 1,
+    resourceName: ResourceType.PERSON, //when we choose it we will se it as a number on console or where we want
+    data: "Yunus Emre" // we can not use obj like {name:Yunus, age:30}
+}
+
+const dataTwo: Resource<string[]> = {
+    uid: 2,
+    resourceName: ResourceType.SHOPPING,
+    data: ["egg", "bread", "milk",] // we cant use number in this array because we declared it string!
+}
+
+console.log(dataOne, dataTwo);
