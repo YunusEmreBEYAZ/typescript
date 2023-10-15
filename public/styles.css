@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    font-family: Roboto;
+    font-family: Roboto
 }
 
 .wrapper {
@@ -10,7 +10,7 @@ body {
 
 h1 {
     margin: 40px auto;
-    color: #ff0aa7;
+    color: #48afc9;
     text-align: center;
 }
 
@@ -26,7 +26,7 @@ li {
 }
 
 li h4 {
-    color: #ff0aa7;
+    color: #48afc9;
     margin: 0;
     text-transform: capitalize;
 }
@@ -39,7 +39,7 @@ li p {
 footer {
     background: #eee;
     padding: 60px;
-    margin-top: 60px;
+    margin-top: 10%;
 }
 
 form {
@@ -71,7 +71,7 @@ select {
 button {
     color: white;
     border: 0;
-    background: #ff0aa7;
+    background: #48afc9;
     padding: 6px;
     min-width: 80px;
     border-radius: 4px;
@@ -83,4 +83,12 @@ footer a {
     color: #999;
     margin-top: 40px;
     font-size: 0.7em;
+}
+
+footer a:hover {
+    text-align: center;
+    display: block;
+    color: #48afc9;
+    margin-top: 37px;
+    font-size: 0.8em;
 }

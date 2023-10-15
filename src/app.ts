@@ -29,8 +29,8 @@
 
 // greetPerson(user1);
 
-import { isParenthesizedTypeNode } from "../../../../node_modules/typescript/lib/typescript";
 import { Invoice } from "./classes/Invoice.js"
+import { ListTemplate } from "./classes/ListTemplate.js";
 import { Payment } from "./classes/Payment.js";
 import { HasFormatter } from "./interfaces/HasFormatter";
 
@@ -56,8 +56,8 @@ const type = document.querySelector("#type") as HTMLSelectElement;
 const tofrom = document.querySelector("#tofrom") as HTMLInputElement;
 const details = document.querySelector("#details") as HTMLInputElement;
 const amount = document.querySelector("#amount") as HTMLInputElement;
-const itemList = document.querySelector(".item-list") as HTMLUListElement;
-
+const ul = document.querySelector(".item-list") as HTMLUListElement;
+const list = new ListTemplate(ul)
 form.addEventListener('submit', (e: Event) => {
     e.preventDefault();
 
@@ -69,10 +69,7 @@ form.addEventListener('submit', (e: Event) => {
         doc = new Payment(tofrom.value, details.value, amount.valueAsNumber)
     }
 
-    const listItem = document.createElement("li");
-    listItem.textContent = doc.format();
-
-    itemList.appendChild(listItem);
+    list.render(doc, type.value, "end")
 
 })
 
