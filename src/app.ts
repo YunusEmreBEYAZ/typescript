@@ -63,13 +63,61 @@ form.addEventListener('submit', (e: Event) => {
 
     let doc: HasFormatter;
 
+    let values: [string, string, number];
+    values = [tofrom.value, details.value, amount.valueAsNumber];
+
     if (type.value === "invoice") {
-        doc = new Invoice(tofrom.value, details.value, amount.valueAsNumber)
+        doc = new Invoice(...values)
     } else {
-        doc = new Payment(tofrom.value, details.value, amount.valueAsNumber)
+        doc = new Payment(...values)
     }
 
     list.render(doc, type.value, "end")
 
 })
 
+
+// GENERICS
+
+//with objects
+const addUID = <T extends { name: string }>(obj: T) => {
+    let uid = Math.floor(Math.random() * 100);
+    return { ...obj, uid }
+}
+
+let userOne = addUID({ name: "Yunus", age: 30 })
+//let userTwo = addUID({ name: 40, age: 30 })  We can not use number because we declared thar object must a name property with string type!!
+console.log(userOne.name);
+
+
+
+
+//with interfaces
+
+// ENUM
+enum ResourceType { PERSON, BOOK, SHOPPING, FILM }
+interface Resource<T> {
+    uid: number;
+    resourceName: ResourceType; // with this assignment we can choose one of the indexes from enum
+    data: T //with theese structure we can choose different types for data for different interfaces!
+}
+
+const dataOne: Resource<string> = {
+    uid: 1,
+    resourceName: ResourceType.PERSON, //when we choose it we will se it as a number on console or where we want
+    data: "Yunus Emre" // we can not use obj like {name:Yunus, age:30}
+}
+
+const dataTwo: Resource<string[]> = {
+    uid: 2,
+    resourceName: ResourceType.SHOPPING,
+    data: ["egg", "bread", "milk",] // we cant use number in this array because we declared it string!
+}
+
+console.log(dataOne, dataTwo);
+
+//tuples
+//we can decide the types in which index. With this we can't change the types later. But we can change the content
+let arr: [string, number, boolean] = ["yunus", 30, true];
+
+arr = ["emre", 21, false];

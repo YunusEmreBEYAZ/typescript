@@ -44,11 +44,46 @@ const list = new ListTemplate(ul);
 form.addEventListener('submit', (e) => {
     e.preventDefault();
     let doc;
+    let values;
+    values = [tofrom.value, details.value, amount.valueAsNumber];
     if (type.value === "invoice") {
-        doc = new Invoice(tofrom.value, details.value, amount.valueAsNumber);
+        doc = new Invoice(...values);
     }
     else {
-        doc = new Payment(tofrom.value, details.value, amount.valueAsNumber);
+        doc = new Payment(...values);
     }
     list.render(doc, type.value, "end");
 });
+// GENERICS
+//with objects
+const addUID = (obj) => {
+    let uid = Math.floor(Math.random() * 100);
+    return Object.assign(Object.assign({}, obj), { uid });
+};
+let userOne = addUID({ name: "Yunus", age: 30 });
+//let userTwo = addUID({ name: 40, age: 30 })  We can not use number because we declared thar object must a name property with string type!!
+console.log(userOne.name);
+//with interfaces
+// ENUM
+var ResourceType;
+(function (ResourceType) {
+    ResourceType[ResourceType["PERSON"] = 0] = "PERSON";
+    ResourceType[ResourceType["BOOK"] = 1] = "BOOK";
+    ResourceType[ResourceType["SHOPPING"] = 2] = "SHOPPING";
+    ResourceType[ResourceType["FILM"] = 3] = "FILM";
+})(ResourceType || (ResourceType = {}));
+const dataOne = {
+    uid: 1,
+    resourceName: ResourceType.PERSON,
+    data: "Yunus Emre" // we can not use obj like {name:Yunus, age:30}
+};
+const dataTwo = {
+    uid: 2,
+    resourceName: ResourceType.SHOPPING,
+    data: ["egg", "bread", "milk",] // we cant use number in this array because we declared it string!
+};
+console.log(dataOne, dataTwo);
+//tuples
+//we can decide the types in which index. With this we can't change the types later. But we can change the content
+let arr = ["yunus", 30, true];
+arr = ["emre", 21, false];
